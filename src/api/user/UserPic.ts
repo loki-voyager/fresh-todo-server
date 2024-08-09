@@ -15,11 +15,16 @@ async function UserPic(req: Request, res: Response) {
     let exist = await User.findOne({
       $or: [{ username: data }, { email: data }],
     });
+    
     if (!exist) {
       res.send({ pic: [] });
-    } else res.send({ pic: exist.pic });
+    } else {
+      const sortedPics = exist.pic.slice().reverse();
+      res.send({ pic: sortedPics });
+    }
   } catch (error) {
     console.log({ error });
+    res.status(500).send({ message: 'Internal Server Error' });
   }
 }
 
