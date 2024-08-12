@@ -59,7 +59,7 @@ afterAll(async () => {
 });
 
 test("Take user token", async () => {
-  userToken = await takeToken({ username: "test" });
+  userToken = await takeToken({ username: "user" });
   console.log({ userToken });
   expect(userToken).not.toBe("");
 });
@@ -68,7 +68,7 @@ test("post /UserPic to take pic of user", async () => {
   await userPicTest({ token: userToken });
 });
 
-test("post /UserEdit to take edit user from test to string and from string to test", async () => {
+test("post /UserEdit to take edit user from test", async () => {
   await userEditTest({ token: userToken });
 });
 
@@ -171,7 +171,7 @@ test("post /AdminGetOneUser to get 1 user", async () => {
 });
 
 test("post /UserToDoGet to get 1 user", async () => {
-  const userToDoGet = users.find((user) => user.username === "test");
+  const userToDoGet = users.find((user) => user.username === "user");
   if (userToDoGet) {
     const id = userToDoGet._id;
     userToDos = await userToDoGetTest({ token: adminToken, id });
@@ -186,7 +186,7 @@ test("post /AdminDeleteUserToDo to delete user todo", async () => {
 });
 
 test("post /AdminGetUserToDoCompleted to get completed user todos", async () => {
-  const userToDoGet = users.find((user) => user.username === "test");
+  const userToDoGet = users.find((user) => user.username === "user");
   if (userToDoGet) {
     completedUserTodos = await adminGetUserToDoCompletedTest({
       token: adminToken,
@@ -203,7 +203,7 @@ test("post /AdminDeleteUserToDoCompleted to delete one completed user todo", asy
 });
 
 test("post /AdminGetUserToDoDeleted to get deleted user todos", async () => {
-  const userToDoGet = users.find((user) => user.username === "test");
+  const userToDoGet = users.find((user) => user.username === "user");
   if (userToDoGet) {
     const id = userToDoGet._id;
     deletedUserTodos = await adminGetUserToDoDeletedTest({
@@ -227,19 +227,19 @@ test("Take owner token", async () => {
 });
 
 test("post /OwnerGiveAdminRole to give admin role for 1 user", async () => {
-  await ownerGiveAdminRoleTest({ token: ownerToken, username: "test" });
+  await ownerGiveAdminRoleTest({ token: ownerToken, username: "user" });
 });
 
 test("post /OwnerTakeTheAdminRole to give admin role for 1 user", async () => {
-  await ownerTakeAdminRoleTest({ token: ownerToken, username: "test" });
+  await ownerTakeAdminRoleTest({ token: ownerToken, username: "user" });
 });
 
 test("post /SignIn to sign in app", async () => {
-  await signInTest({ data: "test", password: "qweqwe" });
+  await signInTest({ data: "user", password: "qweqwe" });
 });
 
 test("post /UserChechExist to true check user in db", async () => {
-  await userChechExistTestTrue({ username: "test", email: "muvmaker@gmail.com" });
+  await userChechExistTestTrue({ username: "user", email: "muvmaker@gmail.com" });
 });
 
 test("post /UserChechExist to false check user in db", async () => {
@@ -247,7 +247,7 @@ test("post /UserChechExist to false check user in db", async () => {
 });
 
 test("post /UserCreateVerification to create verification code for sign up i app", async () => {
-  await userCreateVerificationTest({ username: "test", email: "muvmaker@gmail.com" });
+  await userCreateVerificationTest({ username: "user", email: "muvmaker@gmail.com" });
 });
 
 test("post /UserCreatePasswordRecovery to create code for password recovery", async () => {

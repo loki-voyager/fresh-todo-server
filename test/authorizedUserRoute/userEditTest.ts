@@ -7,7 +7,7 @@ export const userEditTest = async ({ token }: { token: string }) => {
     .set({ Authorization: `Bearer ${token}` })
     .send({
       user: {
-        oldUsername: "test",
+        oldUsername: "user",
         username: "string",
         password: "qweqwe",
         email: "muvmaker@gmail.com",
@@ -28,7 +28,7 @@ export const userEditTest = async ({ token }: { token: string }) => {
     .send({
       user: {
         oldUsername: "string",
-        username: "test",
+        username: "user",
         password: "qweqwe",
         email: "muvmaker@gmail.com",
         pic: [],
